@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random within a Range</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+        }
+
+        #container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid #ddd; 
+        }
+
+        input[type="text"] { 
+            padding: 8px;
+            margin: 5px 0; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+            width: 200px; 
+        }
+
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff; 
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px; 
+        }
+
+        button:hover {
+            background-color: #0056b3; 
+        }
+
+        #output_div {
+            margin-top: 20px;
+            font-weight: bold;
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            background-color: #f9f9f9; 
+            min-width: 200px; 
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">  <h1>Random within a Range</h1>
+
+        <input placeholder="Enter A" id="input_a" type="text"/>
+        <input placeholder="Enter B" id="input_b" type="text"/>
+
+        <button onclick="generate();">Generate Random Value</button>
+        <div id="output_div"></div>
+    </div>
+
+    <script>
+        function generate() {
+            let min_val = parseInt(document.getElementById("input_a").value);
+            let max_val = parseInt(document.getElementById("input_b").value);
+
+            if (isNaN(min_val) || isNaN(max_val)) {
+                alert("Please enter valid integers.");
+                return;
+            }
+
+            let random_value = Math.floor(Math.random() * (max_val - min_val + 1)) + min_val;
+            document.getElementById("output_div").innerHTML = random_value;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project Gallery</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: white;
+            padding: 20px 0;
+            margin: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-container {
+            display: flex;
+            flex: 1;
+        }
+
+        nav {
+            width: 250px;
+            background-color: #e0f7fa;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            height: 100%;
+            border-right: 1px solid #ccc;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav li {
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #b2ebf2;
+            transition: background-color 0.3s ease;
+            border: 1px solid #80deea;
+        }
+
+        nav li:hover {
+            background-color: #80deea;
+            color: white;
+        }
+
+        /* Styling for differentiated tasks */
+        .special-task {
+            background-color: #a7ffeb;
+            border: 1px solid #64ffda;
+            font-weight: bold;
+            color: #00695c;
+        }
+
+        .special-task:hover {
+            background-color: #64ffda;
+            color: white;
+        }
+
+        #content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+        }
+
+        #content iframe {
+            width: 100%;
+            height: 80vh;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-container {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                box-shadow: none;
+            }
+
+            #content {
+                margin: 5px;
+            }
+
+            #content iframe {
+                height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Project Gallery</h1>
+    <div style="text-align: center;">
+        JAGADISH.U
+      </div>
+      
+    <div class="gallery-container">
+        <nav>
+            <ul id="task-list"></ul>
+        </nav>
+
+        <div id="content">
+            <iframe id="task-frame" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const tasks = [
+            {
+                "title": "Task 2",
+                "filePath": "projectgallery/Task2.html",
+                "description": "Introduction to HTML structure."
+            },
+            {
+                "title": "Task 3",
+                "filePath": "projectgallery/Task3.html",
+                "description": "Applying CSS to style HTML elements."
+            },
+            {
+                "title": "Task 4",
+                "filePath": "projectgallery/task4.html",
+                "description": "Simple JavaScript interactions."
+            },
+            {
+                "title": "Task 5",
+                "filePath": "projectgallery/task5.html",
+                "description": "Modifying the DOM with JavaScript."
+            },
+            {
+                "title": "Task 7",
+                "filePath": "projectgallery/task7.html",
+                "description": "Building and validating forms."
+            },
+            {
+                "title": "Task 8",
+                "filePath": "projectgallery/task8.html",
+                "description": "Advanced CSS techniques."
+            },
+            {
+                "title": "Task 9",
+                "filePath": "projectgallery/task9.html",
+                "description": "Handling JavaScript events."
+            },
+            {
+                "title": "Task 10",
+                "filePath": "projectgallery/task10.html",
+                "description": "Fetching data from an API."
+            },
+            {
+                "title": "Task 11",
+                "filePath": "projectgallery/task11.html",
+                "description": "Showcasing a complete project."
+            },
+            {
+                "title": "Task 12",
+                "filePath": "projectgallery/task12.html",
+                "description": "Fetching data from an API."
+            },
+            {
+                "title": "Task 13",
+                "filePath": "projectgallery/task13.html",
+                "description": "Fetching data from an API."
+            },
+            {
+                "title": "Task 14",
+                "filePath": "projectgallery/task14.html",
+                "description": "Fetching data from an API."
+            },
+            {
+                "title": "Task 14-1",
+                "filePath": "projectgallery/task14-1.html",
+                "description": "Fetching data from an API.",
+                "isSpecial": true
+            },
+            {
+                "title": "Task 15",
+                "filePath": "projectgallery/task15.html",
+                "description": "Fetching data from an API."
+            },
+            {
+                "title": "Task 15-1",
+                "filePath": "projectgallery/task15-1.html",
+                "description": "Fetching data from an API.",
+                "isSpecial": true
+            }
+        ];
+
+        const navList = document.getElementById('task-list');
+        const taskFrame = document.getElementById('task-frame');
+
+        tasks.forEach(task => {
+            const listItem = document.createElement('li');
+            listItem.textContent = task.title;
+            listItem.title = task.description;
+            if (task.isSpecial) {
+                listItem.classList.add('special-task');
+            }
+
+            listItem.addEventListener('click', () => {
+                taskFrame.src = task.filePath;
+            });
+            navList.appendChild(listItem);
+        });
+
+        if (tasks.length > 0) {
+            taskFrame.src = tasks[0].filePath;
+        }
+    </script>
+
+</body>
+</html>

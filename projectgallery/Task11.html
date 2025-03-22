@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star with Loops</title>
+</head>
+<body>
+
+    <h2>Star with Loops</h2>
+    <input type="number" id="numInput" placeholder="Enter a positive number" min="1">
+    <button onclick="generateTriangle()">Generate</button>
+    
+    <pre id="output"></pre>
+
+    <script>
+        function generateTriangle() {
+            let num = document.getElementById('numInput').value;
+            let output = '';
+
+            for (let i = 1; i <= num; i++) {
+                output += '*'.repeat(i) + '\n';
+            }
+
+            document.getElementById('output').textContent = output;
+        }
+    </script>
+
+</body>
+</html>

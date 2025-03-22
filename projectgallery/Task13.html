@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Info</title>
+    <script>
+        let persons = [];
+
+        function insertInfo() {
+            let person = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                color: document.getElementById("color").value,
+                description: function() {
+                    return "My name is " + this.name + ", " + this.age + " years old. " + this.color + " in color.";
+                }
+            };
+            persons.push(person);
+            displayPersons();
+        }
+
+        function displayPersons() {
+            let info = "";
+            persons.forEach((person, index) => {
+                info += (index + 1) + ". " + person.description() + "<br>";
+            });
+            document.getElementById("info").innerHTML = info;
+        }
+
+        function showInfo() {
+            displayPersons();
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Add UI to Your Object</h2>
+
+    <input type="text" id="name" placeholder="Enter Name">
+    <input type="text" id="age" placeholder="Enter Age">
+    <input type="text" id="color" placeholder="Enter Favorite Color">
+    <br><br>
+    <button onclick="insertInfo()">Insert Info</button>
+    <button onclick="showInfo()">Show Info</button>
+    <p id="info">Info:</p>
+
+</body>
+</html>
