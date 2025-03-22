@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Personal Information</title>
+<style>
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-color: #f4f4f4;
+color: #333;
+}
+.container {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 60%;
+margin: 30px auto;
+background-color: #fff;
+border-radius: 15px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+padding: 30px;
+}
+h2 {
+color: #555;
+margin-bottom: 20px;
+text-align: center;
+}
+.input-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+margin-bottom: 25px;
+}
+.input-grid label {
+display: block;
+margin-bottom: 8px;
+font-weight: 500;
+color: #666;
+}
+input[type="text"], input[type="number"] {
+width: 100%;
+padding: 10px;
+box-sizing: border-box;
+border: 1px solid #ddd;
+border-radius: 8px;
+transition: border-color 0.3s ease;
+}
+input[type="text"]:focus, input[type="number"]:focus {
+border-color: #4CAF50;
+outline: none;
+box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+}
+button {
+padding: 12px 25px;
+margin: 0 10px;
+border: none;
+cursor: pointer;
+border-radius: 8px;
+font-weight: 500;
+transition: background-color 0.3s ease;
+}
+.insert-button {
+background-color: #4CAF50;
+color: white;
+}
+.insert-button:hover {
+background-color: #45a049;
+}
+.clear-button {
+background-color: #f44336;
+color: white;
+}
+.clear-button:hover {
+background-color: #d32f2f;
+}
+.show-button {
+background-color: #008CBA;
+color: white;
+}
+.show-button:hover {
+background-color: #007bb5;
+}
+.clear-display-button {
+background-color: #ff9800;
+color: white;
+}
+.clear-display-button:hover {
+background-color: #e68a00;
+}
+#people {
+margin-top: 30px;
+border: 1px solid #ddd;
+padding: 15px;
+width: 100%;
+border-radius: 10px;
+background-color: #f9f9f9;
+}
+#people p {
+margin: 8px 0;
+}
+</style>
+<script>
+let people = [];
+function Person(name, dob, gender, age, region) {
+this.name = name;
+this.dob = dob;
+this.gender = gender;
+this.age = age;
+this.region = region;
+this.describe = function() {
+return "Name: " + this.name + ", DOB: " + this.dob + ", Gender: " +
+this.gender + ", Age: " + this.age + ", Region: " + this.region;
+};
+}
+function insertPerson() {
+let name = document.getElementById("name").value;
+let dob = document.getElementById("dob").value;
+let gender = document.getElementById("gender").value;
+let age = document.getElementById("age").value;
+let region = document.getElementById("region").value;
+let newPerson = new Person(name, dob, gender, age, region);
+people.push(newPerson);
+displayPeople();
+}
+function clearInputs() {
+document.getElementById("name").value = "";
+document.getElementById("dob").value = "";
+document.getElementById("gender").value = "";
+document.getElementById("age").value = "";
+document.getElementById("region").value = "";
+}
+function showAll() {
+displayPeople();
+}
+function clearDisplay() {
+document.getElementById("people").innerHTML = "";
+}
+function displayPeople() {
+let peopleDiv = document.getElementById("people");
+peopleDiv.innerHTML = "";
+for (let i = 0; i < people.length; i++) {
+peopleDiv.innerHTML += "<p>" + people[i].describe() + "</p>";
+}
+}
+</script>
+</head>
+<body>
+<div class="container">
+<h2>Personal Information</h2>
+<div class="input-grid">
+<label for="name">Enter Name</label>
+<input type="text" id="name">
+<label for="dob">Enter DOB</label>
+<input type="text" id="dob">
+<label for="gender">Enter Gender</label>
+<input type="text" id="gender">
+<label for="age">Enter Age</label>
+<input type="number" id="age">
+<label for="region">Enter Region</label>
+<input type="text" id="region">
+</div>
+<div>
+<button class="insert-button" onclick="insertPerson()">Insert Info</button>
+<button class="clear-button" onclick="clearInputs()">Clear Inputs</button>
+</div>
+<div>
+<button class="show-button" onclick="showAll()">Show All</button>
+<button class="clear-display-button" onclick="clearDisplay()">Clear
+Display</button>
+</div>
+<h2>Current People</h2>
+<div id="people"></div>
+</div>
+</body>
+</html>

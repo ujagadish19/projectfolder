@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Custom Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+        }
+        h1 {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .welcome-box {
+            background-color: lightgray;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .text-box {
+            background-color: lightblue;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .dashboard-link {
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+            display: block; /* Changed to block */
+            width: fit-content; /* Make the width fit the content */
+            margin: 0 auto; /* Center horizontally */
+        }
+        .dashboard-link:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Dashboard Styles */
+        .dashboard {
+            display: none; /* Initially hidden */
+        }
+        .dashboard-content {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 2px solid black; /* Added black border */
+        }
+        .dashboard-content h2 {
+            margin-bottom: 10px;
+        }
+        .dashboard-content p {
+            font-size: 14px;
+        }
+        .dashboard-gray-box {
+            background-color: gray;
+            padding: 50px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 2px solid black; /* Added black border */
+        }
+        .home-link {
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+            display: block; /* Changed to block */
+            width: fit-content; /* Make the width fit the content */
+            margin: 0 auto; /* Center horizontally */
+        }
+        .home-link:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="home">
+        <h1>Index</h1>
+
+        <div class="welcome-box">
+            <h2>Welcome to My Custom Designed Page!</h2>
+        </div>
+
+        <div class="text-box">
+            <p>This is some random text! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat mollitia enim sunt sapiente nemo assumenda eius tenetur architecto repellat, minus aut! Unde, ut hic. Pariatur repellat fugit esse explicabo officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ipsum quibusdam veritatis consequatur perspiciatis delectus unde vitae, earum suscipit nisi ad veniam amet ipsam! Blanditiis culpa delectus ad cumque iste. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat mollitia enim sunt sapiente nemo assumenda eius tenetur architecto repellat, minus aut! Unde, ut hic. Pariatur repellat fugit esse explicabo officia! Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+
+        <a href="#" class="dashboard-link" onclick="showDashboard()">Click here to see the Dashboard</a>
+    </div>
+
+    <div class="container dashboard" id="dashboard">
+        <h1>Dashboard</h1>
+
+        <div class="dashboard-content">
+            <h2>Welcome to the Custom Dashboard</h2>
+            <p>It doesn't have any functionalities yet!</p>
+        </div>
+
+        <div class="dashboard-gray-box">
+        </div>
+
+        <a href="#" class="home-link" onclick="showHome()">Click here to return to Home</a>
+    </div>
+
+    <script>
+        function showDashboard() {
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+        }
+
+        function showHome() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

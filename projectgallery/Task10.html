@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call-Stack with Array</title>
+    <script>
+        let taskStack = [];
+
+        function addTask() {
+            let taskInput = document.getElementById("taskInput").value;
+            if (taskInput.trim() !== "") {
+                taskStack.push(taskInput);
+                document.getElementById("taskInput").value = ""; // Clear input field
+                updateTaskDisplay();
+            }
+        }
+
+        function undoTask() {
+            if (taskStack.length > 0) {
+                taskStack.pop();
+                updateTaskDisplay();
+            }
+        }
+
+        function updateTaskDisplay() {
+            document.getElementById("taskDisplay").innerText = taskStack.join(", ");
+        }
+    </script>
+</head>
+<body>
+    <h2>Task Stack with Array</h2>
+    <input type="text" id="taskInput" placeholder="Enter Task Name">
+    <button onclick="addTask()">Add Task</button>
+    <button onclick="undoTask()">Undo Task</button>
+    <p><strong>Process Pipeline:</strong> <span id="taskDisplay">None</span></p>
+</body>
+</html>
